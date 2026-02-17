@@ -17,43 +17,42 @@
 """
 
 # ── Data Nilai ────────────────────────────────────────────────────────────────
-# TODO: Buat list berisi 10 nilai ujian
-nilai = ...  # Contoh: [85, 60, 92, 45, 78, 55, 90, 73, 68, 88]
+nilai = [85, 60, 92, 45, 78, 55, 90, 73, 68, 88]
+
+print("===== MANAJEMEN NILAI MAHASISWA =====")
+print(f"Nilai awal   : {nilai}")
 
 
 # ── Statistik Dasar (hitung manual, tanpa library) ───────────────────────────
-# TODO: Hitung nilai tertinggi, terendah, dan rata-rata
-# Hint: gunakan max(), min(), sum(), len()
-nilai_tertinggi = ...
-nilai_terendah = ...
-rata_rata = ...
+nilai_tertinggi = max(nilai)
+nilai_terendah = min(nilai)
+rata_rata = sum(nilai) / len(nilai)
+
+print(f"Tertinggi    : {nilai_tertinggi}")
+print(f"Terendah     : {nilai_terendah}")
+print(f"Rata-rata    : {rata_rata}")
 
 
 # ── Pengurutan ────────────────────────────────────────────────────────────────
-# TODO: Urutkan list dari terkecil ke terbesar
-# Hint: gunakan sorted() atau .sort()
+nilai_sorted = sorted(nilai)
+print(f"Nilai sorted : {nilai_sorted}")
 
 
 # ── List Comprehension: Filter Nilai Lulus ────────────────────────────────────
-# TODO: Gunakan list comprehension untuk membuat list nilai >= 70
-nilai_lulus = ...  # [n for n in nilai if n >= 70]
+nilai_lulus = [n for n in nilai if n >= 70]
+print(f"Nilai lulus  : {nilai_lulus}")
 
 
 # ── Hitung Lulus & Tidak Lulus ────────────────────────────────────────────────
-# TODO: Hitung jumlah mahasiswa lulus dan tidak lulus
-jumlah_lulus = ...
-jumlah_tidak_lulus = ...
+jumlah_lulus = len(nilai_lulus)
+jumlah_tidak_lulus = len(nilai) - jumlah_lulus
+print(f"Lulus: {jumlah_lulus} | Tidak lulus: {jumlah_tidak_lulus}")
 
 
 # ── Manipulasi List ──────────────────────────────────────────────────────────
-# TODO: Tambahkan 2 nilai baru menggunakan append()
-# TODO: Hapus nilai terkecil menggunakan remove()
+nilai.append(95)
+nilai.append(82)
+print(f"\nSetelah append 95 dan 82: {nilai}")
 
-
-# ── Tampilkan Hasil ──────────────────────────────────────────────────────────
-# TODO: Tampilkan semua hasil dengan format rapi
-# Contoh:
-# print("===== MANAJEMEN NILAI MAHASISWA =====")
-# print(f"Nilai awal   : {nilai}")
-# print(f"Tertinggi    : {nilai_tertinggi}")
-# ...
+nilai.remove(min(nilai))
+print(f"Setelah remove terkecil : {nilai}")

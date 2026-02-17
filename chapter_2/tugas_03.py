@@ -18,45 +18,54 @@
 """
 
 # ── Data Kalimat ─────────────────────────────────────────────────────────────
-# TODO: Definisikan 2 kalimat (minimal 10 kata per kalimat)
-kalimat_1 = "..."  # Ganti dengan kalimat Anda
-kalimat_2 = "..."  # Ganti dengan kalimat Anda
+kalimat_1 = "Python adalah bahasa pemrograman yang sangat populer untuk data science dan machine learning"
+kalimat_2 = "Machine learning adalah cabang dari artificial intelligence yang sangat berkembang pesat saat ini"
 
 
 # ── Konversi ke Set ──────────────────────────────────────────────────────────
-# TODO: Konversi kalimat menjadi set kata unik (lowercase)
-# Hint: set(kalimat.lower().split())
-kata_set_1 = ...
-kata_set_2 = ...
+kata_set_1 = set(kalimat_1.lower().split())
+kata_set_2 = set(kalimat_2.lower().split())
+
+print("===== ANALISIS TEKS DENGAN SET =====")
+print(f"\nKalimat 1: {kalimat_1}")
+print(f"Kalimat 2: {kalimat_2}")
+print(f"\nSet kata kalimat 1: {kata_set_1}")
+print(f"Set kata kalimat 2: {kata_set_2}")
 
 
 # ── Intersection (kata yang muncul di KEDUA kalimat) ─────────────────────────
-# TODO: kata_set_1 & kata_set_2  ATAU  kata_set_1.intersection(kata_set_2)
-kata_sama = ...
+kata_sama = kata_set_1 & kata_set_2
+print(f"\n===== INTERSECTION (kata di kedua kalimat) =====")
+print(f"{kata_sama}")
 
 
 # ── Difference (kata HANYA di kalimat 1) ─────────────────────────────────────
-# TODO: kata_set_1 - kata_set_2  ATAU  kata_set_1.difference(kata_set_2)
-hanya_kalimat_1 = ...
+hanya_kalimat_1 = kata_set_1 - kata_set_2
+print(f"\n===== DIFFERENCE (kata hanya di kalimat 1) =====")
+print(f"{hanya_kalimat_1}")
 
 
 # ── Difference (kata HANYA di kalimat 2) ─────────────────────────────────────
-# TODO: kata_set_2 - kata_set_1
-hanya_kalimat_2 = ...
+hanya_kalimat_2 = kata_set_2 - kata_set_1
+print(f"\n===== DIFFERENCE (kata hanya di kalimat 2) =====")
+print(f"{hanya_kalimat_2}")
 
 
 # ── Union (SEMUA kata unik dari kedua kalimat) ──────────────────────────────
-# TODO: kata_set_1 | kata_set_2  ATAU  kata_set_1.union(kata_set_2)
-semua_kata = ...
+semua_kata = kata_set_1 | kata_set_2
+print(f"\n===== UNION (semua kata unik) =====")
+print(f"{semua_kata}")
 
 
 # ── Symmetric Difference (kata di SALAH SATU saja) ──────────────────────────
-# TODO: kata_set_1 ^ kata_set_2  ATAU  kata_set_1.symmetric_difference(kata_set_2)
-kata_unik_masing = ...
+kata_unik_masing = kata_set_1 ^ kata_set_2
+print(f"\n===== SYMMETRIC DIFFERENCE (kata di salah satu saja) =====")
+print(f"{kata_unik_masing}")
 
 
 # ── Tampilkan Hasil ──────────────────────────────────────────────────────────
-# TODO: Tampilkan semua hasil operasi set dengan format rapi
-# print(f"Kata di kedua kalimat (intersection): {kata_sama}")
-# print(f"Jumlah kata unik total: {len(semua_kata)}")
-# ...
+print(f"\n===== RINGKASAN =====")
+print(f"Jumlah kata unik kalimat 1 : {len(kata_set_1)}")
+print(f"Jumlah kata unik kalimat 2 : {len(kata_set_2)}")
+print(f"Jumlah kata sama           : {len(kata_sama)}")
+print(f"Jumlah kata unik total     : {len(semua_kata)}")

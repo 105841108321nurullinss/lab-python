@@ -18,19 +18,19 @@
 """
 
 # ── Data Koordinat ───────────────────────────────────────────────────────────
-# TODO: Buat list berisi 5 tuple koordinat (x, y)
 koordinat = [
-    # (x, y),
-    # (x, y),
-    # ...
+    (0, 0),
+    (3, 4),
+    (6, 8),
+    (1, 1),
+    (5, 2)
 ]
 
 
 # ── Tuple Unpacking ──────────────────────────────────────────────────────────
-# TODO: Tampilkan setiap koordinat menggunakan unpacking
-# Contoh:
-# for i, (x, y) in enumerate(koordinat, 1):
-#     print(f"Titik {i}: x={x}, y={y}")
+print("===== DATA KOORDINAT =====")
+for i, (x, y) in enumerate(koordinat, 1):
+    print(f"Titik {i}: x={x}, y={y}")
 
 
 # ── Fungsi Jarak Euclidean ───────────────────────────────────────────────────
@@ -44,37 +44,50 @@ def hitung_jarak(titik_1, titik_2):
     Returns:
         float: Jarak antara kedua titik.
     """
-    # TODO: Implementasikan rumus Euclidean
-    # d = ((x2-x1)**2 + (y2-y1)**2) ** 0.5
-    ...
+    x1, y1 = titik_1
+    x2, y2 = titik_2
+    return ((x2 - x1)**2 + (y2 - y1)**2) ** 0.5
 
 
 # ── Cari Pasangan Titik Terdekat ─────────────────────────────────────────────
-# TODO: Bandingkan semua pasangan titik, cari yang jaraknya paling kecil
-# Hint: gunakan nested loop
-#   jarak_min = float('inf')
-#   for i in range(len(koordinat)):
-#       for j in range(i+1, len(koordinat)):
-#           jarak = hitung_jarak(koordinat[i], koordinat[j])
-#           if jarak < jarak_min:
-#               jarak_min = jarak
-#               pasangan_terdekat = (i, j)
+print("\n===== JARAK ANTAR TITIK =====")
+jarak_min = float('inf')
+pasangan_terdekat = (0, 0)
+
+for i in range(len(koordinat)):
+    for j in range(i + 1, len(koordinat)):
+        jarak = hitung_jarak(koordinat[i], koordinat[j])
+        print(f"Titik {i+1} ke Titik {j+1}: {jarak:.2f}")
+        if jarak < jarak_min:
+            jarak_min = jarak
+            pasangan_terdekat = (i + 1, j + 1)
+
+print(f"\n===== PASANGAN TERDEKAT =====")
+print(f"Titik {pasangan_terdekat[0]} {koordinat[pasangan_terdekat[0]-1]} dan Titik {pasangan_terdekat[1]} {koordinat[pasangan_terdekat[1]-1]}")
+print(f"Jarak: {jarak_min:.2f}")
 
 
 # ── Tuple sebagai Key Dictionary ─────────────────────────────────────────────
-# TODO: Buat dictionary dengan tuple sebagai key
-# Contoh:
-# lokasi = {
-#     (0, 0): "Kampus Unismuh",
-#     (3, 4): "Perpustakaan",
-#     ...
-# }
+lokasi = {
+    (0, 0): "Kampus Unismuh",
+    (3, 4): "Perpustakaan",
+    (6, 8): "Kantin",
+    (1, 1): "Parkiran",
+    (5, 2): "Lab Komputer"
+}
+
+print(f"\n===== TUPLE SEBAGAI KEY DICTIONARY =====")
+for coord, nama in lokasi.items():
+    print(f"{coord} -> {nama}")
 
 
 # ── Buktikan List Tidak Bisa Jadi Key ────────────────────────────────────────
-# TODO: Buktikan menggunakan try-except
-# try:
-#     invalid_dict = {[1, 2]: "ini akan error"}
-# except TypeError as e:
-#     print(f"Error: {e}")
-#     print("List tidak bisa menjadi key dictionary karena mutable!")
+print(f"\n===== BUKTI LIST TIDAK BISA JADI KEY =====")
+print("Tuple sebagai key: BERHASIL (seperti contoh di atas)")
+
+try:
+    invalid_dict = {[1, 2]: "ini akan error"}
+except TypeError as e:
+    print(f"List sebagai key: ERROR!")
+    print(f"Pesan error: {e}")
+    print("Alasan: List tidak bisa menjadi key dictionary karena mutable!")
